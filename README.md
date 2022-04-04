@@ -16,9 +16,29 @@ Do not spend more than two hours on this assignment. Keep it simple!
 
 ---
 
+## Required Tools:
+Node,
+NPM,
+GIT,
+VS Code
+
+## GIT commands:
+
+git add.
+git commit -m "message"
+git push
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+First Step:
+
+## `git clone https://github.com/Anushri9/software-engineer-fe.git`
+
+For Package Installation, In the project directory, you can run:
+
+### `npm install`
 
 In the project directory, you can run:
 
