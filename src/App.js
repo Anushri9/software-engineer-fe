@@ -82,7 +82,7 @@ const App = (props) => {
       <b>TITLE:<br /><input type="text" name="title" onChange={(e) => onFieldChange(e)} /></b><br />
       <b>IMAGE URL:<br /><input type="text" name="image" onChange={(e) => onFieldChange(e)} /></b><br />
       <b>COMMENT:<br /><input type="text" name="comment" onChange={(e) => onFieldChange(e)} /></b><br />
-      <input type="button" onClick={(e) => add(movieState.title, movieState.image, movieState.comment)} value="ADD MOVIE" />
+      <input type="button" onClick={(e) => add(movieState)} value="ADD MOVIE" />
 
       <h1>Watchlist:</h1>
       {getMoviesComponents(getAllMovies())}

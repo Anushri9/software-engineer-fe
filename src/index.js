@@ -24,14 +24,13 @@ export const getAllMovies = () => {
 
 }
 
-export function add(title, description, image) {
-	var movie = {};
-	movie.title = title;
-	movie.description = description;
-	movie.image = image;
+export const add = (data) => {
 
 	var movies = getAllMovies();
-	movies.push(movie);
+
+	if (!movies.find(({title}) => title === data.title)) { // Add duplicate list check
+		movies.push(data);
+	  }
 
 	localStorage.setItem('movies-all', JSON.stringify(movies));
 
