@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import { addWatchedMovie, add, removeWatchedMovie, getWatchedMovies, getAllMovies } from './index.js';
@@ -6,14 +6,14 @@ import { addWatchedMovie, add, removeWatchedMovie, getWatchedMovies, getAllMovie
 const getMoviesComponents = (movies) => {
   var components = [];
 
-  movies.forEach(function(movie) {
+  movies.forEach(function (movie) {
     components.push(
       <div className="all">
         <div>
           <img src={movie.image} height="100px" />
         </div>
         <span>
-          <a className="movie-watched" href="#" onClick={function() { addWatchedMovie(movie.title, movie.comment, movie.image) }}>
+          <a className="movie-watched" href="#" onClick={function () { addWatchedMovie(movie.title, movie.comment, movie.image) }}>
             {movie.title}
           </a>
         </span>
@@ -33,14 +33,14 @@ const getMoviesComponents = (movies) => {
 function getWatchedMoviesComponents(movies) {
   var components = [];
 
-  movies.forEach(function(movie) {
+  movies.forEach(function (movie) {
     components.push(movie && (
       <div className="watched">
         <div>
           <img src={movie.image} height="100px" />
         </div>
         <span>
-          <a className="movie-watched" href="#" onClick={function() { removeWatchedMovie(movie.title) }}>
+          <a className="movie-watched" href="#" onClick={function () { removeWatchedMovie(movie.title) }}>
             {movie.title}
           </a>
         </span>
@@ -57,15 +57,32 @@ function getWatchedMoviesComponents(movies) {
   return components;
 }
 
-function App(props) {
+const App = (props) => {
+
+  // Define States
+  const [movieState, setMoviewState] = useState({
+    title: '',
+    image: '',
+    comment: '',
+  })
+
+  // onChange reusable function
+  const onFieldChange = (e) => {
+    const { name, value } = e.target
+    setMoviewState({
+      ...movieState,
+      [name]: value
+    })
+
+  }
   return (
     <div className="App">
       <h1>Codest Movies!</h1>
       <h1>Add movie!</h1>
-      <b>TITLE:<br /><input type="text" onChange={function(e) { title = e.target.value; }} /></b><br />
-      <b>IMAGE URL:<br /><input type="text" onChange={function(e) { image = e.target.value; }} /></b><br />
-      <b>COMMENT:<br /><input type="text" onChange={function(e) { comment = e.target.value; }} /></b><br />
-      <input type="button" onClick={function(e) { add(title, image, comment); }} value="ADD MOVIE" />
+      <b>TITLE:<br /><input type="text" name="title" onChange={(e) => onFieldChange(e)} /></b><br />
+      <b>IMAGE URL:<br /><input type="text" name="image" onChange={(e) => onFieldChange(e)} /></b><br />
+      <b>COMMENT:<br /><input type="text" name="comment" onChange={(e) => onFieldChange(e)} /></b><br />
+      <input type="button" onClick={(e) => add(movieState.title, movieState.image, movieState.comment)} value="ADD MOVIE" />
 
       <h1>Watchlist:</h1>
       {getMoviesComponents(getAllMovies())}
@@ -75,9 +92,5 @@ function App(props) {
     </div>
   );
 }
-
-var title = '';
-var image = '';
-var comment = '';
 
 export default App;
