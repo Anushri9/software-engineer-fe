@@ -6,7 +6,7 @@ import { addWatchedMovie, add, removeWatchedMovie, getWatchedMovies, getAllMovie
 const getMoviesComponents = (movies) => {
   var components = [];
 
-  movies.forEach(function (movie) {
+  movies.forEach((movie) => {
     components.push(
       <div className="all">
         <div>
@@ -30,7 +30,7 @@ const getMoviesComponents = (movies) => {
   return components;
 }
 
-function getWatchedMoviesComponents(movies) {
+const getWatchedMoviesComponents = (movies) => {
   var components = [];
 
   movies.forEach(function (movie) {
