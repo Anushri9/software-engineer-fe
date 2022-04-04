@@ -62,7 +62,7 @@ export const removeWatchedMovie = (title) => {
 	render();
 }
 
-function render() {
+const render = () => {
 	ReactDOM.render(<App movies={getAllMovies()} watched={getWatchedMovies()} />, document.getElementById('root'))
 }
 
