@@ -29,9 +29,9 @@ export const add = (data) => {
 	const movies = getAllMovies();
 
 	// Add duplicate list check
-	if (!movies.find(({title}) => title === data.title)) { 
+	if (!movies.find(({ title }) => title === data.title)) {
 		movies.push(data);
-	  }
+	}
 
 	localStorage.setItem('movies-all', JSON.stringify(movies));
 
@@ -40,28 +40,24 @@ export const add = (data) => {
 
 export const addWatchedMovie = (data) => {
 
-		const movies = getWatchedMovies();
-		
-		if (!movies.find(({title}) => title === data.title)) { // Add duplicate list check
-			movies.push(data);
-		  }
-	
-		localStorage.setItem('movies-watched', JSON.stringify(movies));
-	
-		render();
-	}
+	const movies = getWatchedMovies();
 
-export function removeWatchedMovie(title) {
-	var movies = getWatchedMovies();
-
-	for (var i = 0; i < movies.length; i++) {
-		if (!movies[i]) continue;
-		if (movies[i].title == title) {
-			movies[i] = null
-		}
+	if (!movies.find(({ title }) => title === data.title)) { // Add duplicate list check
+		movies.push(data);
 	}
 
 	localStorage.setItem('movies-watched', JSON.stringify(movies));
+
+	render();
+}
+
+export const removeWatchedMovie = (title) => {
+	const movies = getWatchedMovies();
+
+	//use filter instead of foreach
+	let deletedMovie = movies.filter(movielist => movielist.title !== title)
+
+	localStorage.setItem('movies-watched', JSON.stringify(deletedMovie));
 
 	render();
 }
