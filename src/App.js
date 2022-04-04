@@ -13,7 +13,7 @@ const getMoviesComponents = (movies) => {
           <img src={movie.image} height="100px" />
         </div>
         <span>
-          <a className="movie-watched" href="#" onClick={function () { addWatchedMovie(movie) }}>
+          <a className="movie-watched" href="#" onClick={() => { addWatchedMovie(movie) }}>
             {movie.title}
           </a>
         </span>
@@ -33,14 +33,14 @@ const getMoviesComponents = (movies) => {
 const getWatchedMoviesComponents = (movies) => {
   var components = [];
 
-  movies.forEach(function (movie) {
+  movies.forEach((movie) => {
     components.push(movie && (
       <div className="watched">
         <div>
           <img src={movie.image} height="100px" />
         </div>
         <span>
-          <a className="movie-watched" href="#" onClick={function () { removeWatchedMovie(movie.title) }}>
+          <a className="movie-watched" href="#" onClick={() => { removeWatchedMovie(movie.title) }}>
             {movie.title}
           </a>
         </span>
