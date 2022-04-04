@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-export function getWatchedMovies() {
+export const getWatchedMovies = () => {
 	var movies = localStorage.getItem('movies-watched');
 
 	if (!movies) {
 		return [];
-	} else {
-		return JSON.parse(movies);
 	}
+	return JSON.parse(movies);
 }
 
 export function getAllMovies() {
@@ -18,21 +17,21 @@ export function getAllMovies() {
 
 	if (!movies) {
 		return [
-		{
-			title: 'The Avengers',
-			image: 'http://d21lz9b0v8r1zn.cloudfront.net/wp-content/uploads//2012/03/detail.jpg',
-			comment: 'New York blows up in this!'
-		},
-		{
-			title: 'Dark City',
-			image: 'https://i.chzbgr.com/full/5569379584/hA96709E0/',
-			comment: 'This looks mysterious. Cool!'
-		},
-		{
-			title: 'Hot Tub Time Machine',
-			image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG7vNmphIcVhEcybvSvMgbTkV6EE2twHBNanKvgDx3ZS7Ivn6Dtg',
-			comment: 'Someone said this was fun. Maybe!'
-		},
+			{
+				title: 'The Avengers',
+				image: 'http://d21lz9b0v8r1zn.cloudfront.net/wp-content/uploads//2012/03/detail.jpg',
+				comment: 'New York blows up in this!'
+			},
+			{
+				title: 'Dark City',
+				image: 'https://i.chzbgr.com/full/5569379584/hA96709E0/',
+				comment: 'This looks mysterious. Cool!'
+			},
+			{
+				title: 'Hot Tub Time Machine',
+				image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG7vNmphIcVhEcybvSvMgbTkV6EE2twHBNanKvgDx3ZS7Ivn6Dtg',
+				comment: 'Someone said this was fun. Maybe!'
+			},
 		];
 	} else {
 		return JSON.parse(movies);
@@ -71,7 +70,7 @@ export function removeWatchedMovie(title) {
 	var movies = getWatchedMovies();
 
 	for (var i = 0; i < movies.length; i++) {
-	   if (!movies[i]) continue;
+		if (!movies[i]) continue;
 		if (movies[i].title == title) {
 			movies[i] = null
 		}
