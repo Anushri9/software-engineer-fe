@@ -26,7 +26,7 @@ export const getAllMovies = () => {
 
 export const add = (data) => {
 
-	var movies = getAllMovies();
+	const movies = getAllMovies();
 
 	// Add duplicate list check
 	if (!movies.find(({title}) => title === data.title)) { 
@@ -38,19 +38,18 @@ export const add = (data) => {
 	render();
 }
 
-export function addWatchedMovie(title, description, image) {
-	var movie = {};
-	movie.title = title;
-	movie.description = description;
-	movie.image = image;
+export const addWatchedMovie = (data) => {
 
-	var movies = getWatchedMovies();
-	movies.push(movie);
-
-	localStorage.setItem('movies-watched', JSON.stringify(movies));
-
-	render();
-}
+		const movies = getWatchedMovies();
+		
+		if (!movies.find(({title}) => title === data.title)) { // Add duplicate list check
+			movies.push(data);
+		  }
+	
+		localStorage.setItem('movies-watched', JSON.stringify(movies));
+	
+		render();
+	}
 
 export function removeWatchedMovie(title) {
 	var movies = getWatchedMovies();

@@ -13,7 +13,7 @@ const getMoviesComponents = (movies) => {
           <img src={movie.image} height="100px" />
         </div>
         <span>
-          <a className="movie-watched" href="#" onClick={function () { addWatchedMovie(movie.title, movie.comment, movie.image) }}>
+          <a className="movie-watched" href="#" onClick={function () { addWatchedMovie(movie) }}>
             {movie.title}
           </a>
         </span>
