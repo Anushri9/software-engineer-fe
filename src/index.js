@@ -28,7 +28,8 @@ export const add = (data) => {
 
 	var movies = getAllMovies();
 
-	if (!movies.find(({title}) => title === data.title)) { // Add duplicate list check
+	// Add duplicate list check
+	if (!movies.find(({title}) => title === data.title)) { 
 		movies.push(data);
 	  }
 
