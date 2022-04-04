@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
+import movieData from './movieData.json'
+
 export const getWatchedMovies = () => {
-	var movies = localStorage.getItem('movies-watched');
+	const movies = localStorage.getItem('movies-watched');
 
 	if (!movies) {
 		return [];
@@ -12,30 +14,14 @@ export const getWatchedMovies = () => {
 	return JSON.parse(movies);
 }
 
-export function getAllMovies() {
-	var movies = localStorage.getItem('movies-all');
+export const getAllMovies = () => {
+	const movies = localStorage.getItem('movies-all');
 
 	if (!movies) {
-		return [
-			{
-				title: 'The Avengers',
-				image: 'http://d21lz9b0v8r1zn.cloudfront.net/wp-content/uploads//2012/03/detail.jpg',
-				comment: 'New York blows up in this!'
-			},
-			{
-				title: 'Dark City',
-				image: 'https://i.chzbgr.com/full/5569379584/hA96709E0/',
-				comment: 'This looks mysterious. Cool!'
-			},
-			{
-				title: 'Hot Tub Time Machine',
-				image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG7vNmphIcVhEcybvSvMgbTkV6EE2twHBNanKvgDx3ZS7Ivn6Dtg',
-				comment: 'Someone said this was fun. Maybe!'
-			},
-		];
-	} else {
-		return JSON.parse(movies);
+		return movieData;
 	}
+	return JSON.parse(movies);
+
 }
 
 export function add(title, description, image) {
